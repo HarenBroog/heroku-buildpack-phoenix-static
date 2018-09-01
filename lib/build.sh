@@ -177,7 +177,7 @@ run_compile() {
   #   rsync -a -v --ignore-existing $cache_dir/phoenix-static/ priv/static
   # fi
 
-  cd $assets_dir
+  # cd $assets_dir
 
   if [ -f $custom_compile ]; then
     info "Running custom compile"
