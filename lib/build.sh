@@ -165,16 +165,17 @@ compile() {
 run_compile() {
   local custom_compile="${build_dir}/${compile}"
 
-  cd $phoenix_dir
+  cd $build_dir
+  # cd $phoenix_dir
 
-  has_clean=$(mix help "${phoenix_ex}.digest.clean" 1>/dev/null 2>&1; echo $?)
+  # has_clean=$(mix help "${phoenix_ex}.digest.clean" 1>/dev/null 2>&1; echo $?)
 
-  if [ $has_clean = 0 ]; then
-    mkdir -p $cache_dir/phoenix-static
-    info "Restoring cached assets"
-    mkdir -p priv
-    rsync -a -v --ignore-existing $cache_dir/phoenix-static/ priv/static
-  fi
+  # if [ $has_clean = 0 ]; then
+  #   mkdir -p $cache_dir/phoenix-static
+  #   info "Restoring cached assets"
+  #   mkdir -p priv
+  #   rsync -a -v --ignore-existing $cache_dir/phoenix-static/ priv/static
+  # fi
 
   cd $assets_dir
 
@@ -186,12 +187,12 @@ run_compile() {
     source ${build_pack_dir}/${compile} 2>&1 | indent
   fi
 
-  cd $phoenix_dir
+  # cd $phoenix_dir
 
-  if [ $has_clean = 0 ]; then
-    info "Caching assets"
-    rsync -a --delete -v priv/static/ $cache_dir/phoenix-static
-  fi
+  # if [ $has_clean = 0 ]; then
+  #   info "Caching assets"
+  #   rsync -a --delete -v priv/static/ $cache_dir/phoenix-static
+  # fi
 }
 
 cache_versions() {
